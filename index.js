@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const client = new discord.Client();
 client.commands = new discord.Collection();
-client.login(process.env.token);
+
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -34,7 +34,7 @@ fs.readdir("./commands/", (err, files) => {
 client.on("ready", async () => {
 
     console.log(`${client.user.username} is online.`);
-    client.user.setActivity("Zaandam RolePlay", {type: "PLAYING"});
+    client.user.setActivity("Almelo V2", {type: "PLAYING"});
     
 });
 
@@ -216,3 +216,4 @@ async function promptMessage(message, author, time, reactions) {
 
 });
 
+client.login(process.env.token);
