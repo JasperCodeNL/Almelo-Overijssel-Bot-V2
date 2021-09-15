@@ -1,0 +1,26 @@
+{
+  "name": "almelo-overijssel-bot-v2",
+  "version": "1.0.0",
+  "description": "Bot van Almelo",
+  "main": "index.js",
+  "scripts": {
+    "test": "?test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasperCodeNL/Almelo-Overijssel-Bot-V2.git"
+  },
+  "keywords": [
+    "Bot",
+    "Almelo"
+  ],
+  "author": "Jasper K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JasperCodeNL/Almelo-Overijssel-Bot-V2/issues"
+  },
+  "homepage": "https://github.com/JasperCodeNL/Almelo-Overijssel-Bot-V2#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
