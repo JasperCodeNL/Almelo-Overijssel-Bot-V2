@@ -1,70 +1,62 @@
 const discord = require("discord.js");
-const botConfig = require("./botconfig.json");
-const client = new discord.Client();
+const botConfig = require("./botConfig.json");
+
 const fs = require("fs");
 
-client.commands = new Collection();
+const client = new discord.Client();
+client.commands = new discord.Collection();
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith(".js"));
+client.login(process.env.token);
 
-for (const file of commandFiles) {
+fs.readdir("./commands/" , (err, files) => {
 
-    const command = require(`./commands/${file}`);
+    if(err) console.log(err);
 
-    client.commands.set(command.help.name, command);
+    var jsFiles = files.filter(f => f.split(".").pop() === "js");
 
-    console.log(`${command.help.name} is geladen!`)
+    if(jsFiles.length <=0) {
+        console.log("Geen files gevonden!");
+        return;
+    }
 
-}
+    jsFiles.forEach((f, i) => {
 
-client.on("ready", () => {
-    console.log(`${client.user.username} is online!`);
-    client.user.setActivity("Almelo Overijssel", { type: "PLAYING" });
+        var fileGet = require(`./commands/${f}`);
+        console.log(`${f} Is geladen!`);
+
+        client.commands.set(fileGet.help.name, fileGet);
+
+    })
+
 });
 
-client.on("guildMemberAdd" , member => {
- 
-    var role =  member.guild.roles.cache.get("793840906016784474");
-  
-    if (!role) return;
-  
-    member.roles.add(role);
-  
-    var channel = member.guild.channels.cache.get("806810000386162738");
+client.on("ready", async () => {
+    
+    console.log(`${client.user.username} is online!`);
+    client.user.setActivity("Almelo V2", {type: "PLAYING"});
 
-    if(!channel) return;
-  
-    channel.send(` Welkom ${member} in **Alemlo Overijssel**! Veel Roleplay plezier!`);
-  
- });
+});
 
-client.on("messageCreate", async message => {
+client.on("message", async message => {
 
-    if (message.author.bot) return;
+    if(message.author.bot) return;
 
-    var prefix = botConfig.prefix;
+    if(message.channel.type == "dm") return;
+
+    var prefix = botConfig.prefix
 
     var messageArray = message.content.split(" ");
 
     var command = messageArray[0];
 
-    if (!message.content.startsWith(prefix)) return;
-
-    const commandData = client.commands.get(command.slice(prefix.length));
-
-    if (!commandData) return;
-
     var arguments = messageArray.slice(1);
 
-    try {
+    var commands = client.commands.get(command.slice(prefix.length));
 
-        await commandData.run(client, message, arguments);
+    if(commands) commands.run(client,message, arguments);
 
-    } catch (error) {
-        console.log(error);
-        await message.reply(`**Er is een probleem opgetreden!** '*${error}*'`);
+    if(command === `${prefix}hallo`){
+        return message.channel.send("Hallo!");
     }
 
 });
-
-client.login(env.procces.token)
