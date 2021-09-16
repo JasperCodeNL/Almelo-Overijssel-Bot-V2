@@ -59,4 +59,13 @@ client.on("message", async message => {
         return message.channel.send("Hallo!");
     }
 
+    try {
+
+        await commandData.run(client, message, arguments);
+
+    } catch (error) {
+        console.log(error);
+        await message.reply(`**Er is een probleem opgetreden!** '*${error}*'`);
+    }
+
 });
