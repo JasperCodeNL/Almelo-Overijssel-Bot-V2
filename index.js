@@ -1,42 +1,30 @@
 const discord = require("discord.js");
-const botConfig = require("./botconfig.json");
-
+const botConfig = require("./botConfig.json");
 const fs = require("fs");
 
-const client = new discord.Client();
-client.commands = new discord.Collection();
-
-fs.readdir("./commands/", (err, files) => {
-
-    if(err) console.log(err);
-
-    var jsFiles = files.filter(f => f.split(".").pop() === "js");
-
-    if(jsFiles.length <=0) {
-        console.log("Geen file gevonden!");
-        return;
-
-    }
-
-    jsFiles.forEach((f,i) => {
-
-        var fileGet = require(`./commands/${f}`);
-        console.log(`De file ${f} is geladen!`)
-
-        client.commands.set(fileGet.help.name, fileGet);
-
-    });
-
+const client = new Client({
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MEMBERS]
 });
 
+client.commands = new Collection();
 
-client.on("ready", async () => {
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith(".js"));
 
-    console.log(`${client.user.username} is online.`);
-    client.user.setActivity("Almelo V2", {type: "PLAYING"});
-    
+for (const file of commandFiles) {
+
+    const command = require(`./commands/${file}`);
+
+    client.commands.set(command.help.name, command);
+
+    console.log(`${command.help.name} is geladen!`)
+
+}
+
+client.once("ready", () => {
+    console.log(`${client.user.username} is online!`);
+    client.user.setActivity("Almelo Overijssel", { type: "PLAYING" });
 });
-
 
 client.on("guildMemberAdd" , member => {
  
@@ -82,24 +70,5 @@ client.on("messageCreate", async message => {
     }
 
 });
-    
-// Emojis aan teksten kopellen.
-async function promptMessage(message, author, time, reactions) {
-    // We gaan eerst de tijd * 1000 doen zodat we seconden uitkomen.
-    time *= 1000;
- 
-    // We gaan ieder meegegeven reactie onder de reactie plaatsen.
-    for (const reaction of reactions) {
-        await message.react(reaction);
-    }
- 
-    // Als de emoji de juiste emoji is die men heeft opgegeven en als ook de auteur die dit heeft aangemaakt er op klikt
-    // dan kunnen we een bericht terug sturen.
-    const filter = (reaction, user) => reactions.includes(reaction.emoji.name) && user.id === author.id;
- 
-    // We kijken als de reactie juist is, dus met die filter en ook het aantal keren en binnen de tijd.
-    // Dan kunnen we bericht terug sturen met dat icoontje dat is aangeduid.
-    return message.awaitReactions(filter, { max: 1, time: time }).then(collected => collected.first() && collected.first().emoji.name);
-}
 
-client.login(process.env.token);
+client.login(env.procces.token)
