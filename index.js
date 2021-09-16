@@ -1,11 +1,6 @@
 const discord = require("discord.js");
-const botConfig = require("./botConfig.json");
+const botConfig = require("./botconfig.json");
 const fs = require("fs");
-
-const client = new Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_MEMBERS]
-});
 
 client.commands = new Collection();
 
@@ -21,7 +16,7 @@ for (const file of commandFiles) {
 
 }
 
-client.once("ready", () => {
+client.on("ready", () => {
     console.log(`${client.user.username} is online!`);
     client.user.setActivity("Almelo Overijssel", { type: "PLAYING" });
 });
