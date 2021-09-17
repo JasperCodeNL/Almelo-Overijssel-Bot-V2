@@ -2,9 +2,9 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
     var botEmbed = new discord.MessageEmbed()
-    .setTitle("Serverinfo!")
+    .setTitle("Serverinfo")
     .setColor("BLUE")
-    .setThumbnail("https://cdn.discordapp.com/avatars/823900784072458261/ecefca36f24b4e0b121beb60cb768f92.png?size=256")
+    .setThumbnail("https://cdn.discordapp.com/avatars/873945139951829033/157a7904c5f48987f1f56ec0a33ad4e2.png?size=256")
     .setTimestamp()
     .setDescription("Almelo Overijssel")
     .setFooter("Almelo Overijssel")
