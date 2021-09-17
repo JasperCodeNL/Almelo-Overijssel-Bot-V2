@@ -33,7 +33,7 @@ fs.readdir("./commands/" , (err, files) => {
 client.on("ready", async () => {
     
     console.log(`${client.user.username} is online!`);
-    client.user.setActivity("Almelo V2", {type: "PLAYING"});
+    client.user.setActivity("Almelo Overijssel V2", {type: "PLAYING"});
 
 });
 
