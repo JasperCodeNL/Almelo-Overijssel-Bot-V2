@@ -5,9 +5,8 @@ module.exports.run = async(bot, message, args) => {
     .setColor("BLUE")
     .setFooter("Leden")
     .setTimestamp()
-    .addFields(
-        {name:"Leden:", value:message.guild.memberCount}
-    ); 
+    .setTitle("Leden:")
+    .setDescription(message.guild.memberCount) 
     
 return message.channel.send(botEmbed);
 
