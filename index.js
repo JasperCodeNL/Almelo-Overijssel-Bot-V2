@@ -43,7 +43,7 @@ client.on("message", async message => {
 
     if(message.channel.type == "dm") return;
 
-    var prefix = botConfig.prefix
+    var prefix = env.procces.prefix
 
     var messageArray = message.content.split(" ");
 
