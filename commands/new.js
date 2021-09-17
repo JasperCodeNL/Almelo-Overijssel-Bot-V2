@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
 
-    const categoryID = "855749102171193345";
+    const categoryID = "873968786968035329";
 
     var userName = message.author.username;
     var userDiscriminator = message.author.discriminator;
@@ -40,16 +40,16 @@ module.exports.run = async(bot, message, args) => {
                         VIEW_CHANNEL: true
                     });
 
-                    settedParent.updateOverwrite(message.guild.roles.cache.find(x => x.name === '@Staff Team'),{
-                        CREATE_INSTANT_INVITE: false,
-                        READ_MASSAGES: true,
-                        SEND_MASSAGES: true,
-                        ATTACH_FILES: true,
-                        CONNECT: true,
-                        ADD_REACTIONS: true,
-                        READ_MASSAGES_HISTORY: true,
-                        VIEW_CHANNEL: true
-                    });
+//                    settedParent.updateOverwrite(message.guild.roles.cache.find(x => x.name === '@Staff Team'),{
+//                        CREATE_INSTANT_INVITE: false,
+//                        READ_MASSAGES: true,
+//                        SEND_MASSAGES: true,
+//                        ATTACH_FILES: true,
+//                        CONNECT: true,
+//                       ADD_REACTIONS: true,
+//                        READ_MASSAGES_HISTORY: true,
+//                        VIEW_CHANNEL: true
+//                    });
 
                     var embedParent =  new discord.MessageEmbed()
                         .setDescription(`**Welkom ${message.author.username}, het staffteam komt er zo aan. \n Stuur alvast je klacht/vraag.** `)

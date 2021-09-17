@@ -6,7 +6,7 @@ const fs = require("fs");
 const client = new discord.Client();
 client.commands = new discord.Collection();
 
-client.login(process.env.token);
+client.login(env.procces.token);
 
 fs.readdir("./commands/" , (err, files) => {
 
@@ -54,18 +54,5 @@ client.on("message", async message => {
     var commands = client.commands.get(command.slice(prefix.length));
 
     if(commands) commands.run(client,message, arguments);
-
-    if(command === `${prefix}hallo`){
-        return message.channel.send("Hallo!");
-    }
-
-    try {
-
-        await commandData.run(client, message, arguments);
-
-    } catch (error) {
-        console.log(error);
-        await message.reply(`**Er is een probleem opgetreden!** '*${error}*'`);
-    }
 
 });
