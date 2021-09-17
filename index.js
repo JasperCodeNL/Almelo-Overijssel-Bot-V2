@@ -65,6 +65,9 @@ client.on("message", async message => {
 
     var command = messageArray[0];
 
+    if(!message.content.startsWith(prefix)) return;
+
+    //  Command Handler
     var arguments = messageArray.slice(1);
 
     var commands = client.commands.get(command.slice(prefix.length));
