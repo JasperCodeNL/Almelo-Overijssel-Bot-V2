@@ -1,5 +1,5 @@
 const discord = require("discord.js");
-const botConfig = require("./botConfig.json")
+// const botConfig = require("./botConfig.json")
 
 const fs = require("fs");
 
@@ -36,6 +36,22 @@ client.on("ready", async () => {
     client.user.setActivity("Almelo V2", {type: "PLAYING"});
 
 });
+
+client.on("guildMemberAdd" , member => {
+ 
+    var role =  member.guild.roles.cache.get("793840906016784474");
+  
+    if (!role) return;
+  
+    member.roles.add(role);
+  
+    var channel = member.guild.channels.cache.get("806810000386162738");
+
+    if(!channel) return;
+  
+    channel.send(` Welkom ${member} in **Alemlo Overijssel**! Veel Roleplay plezier!`);
+  
+ });
 
 client.on("message", async message => {
 
