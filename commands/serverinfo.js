@@ -6,8 +6,8 @@ module.exports.run = async(bot, message, args) => {
     .setColor("BLUE")
     .setThumbnail("https://cdn.discordapp.com/avatars/823900784072458261/ecefca36f24b4e0b121beb60cb768f92.png?size=256")
     .setTimestamp()
-    .setDescription("Zaandam RolePlay")
-    .setFooter("Zaandam RolePlay")
+    .setDescription("Almelo Overijssel")
+    .setFooter("Almelo Overijssel")
     .addFields(
         {name:"Leden:", value:message.guild.memberCount}
     );

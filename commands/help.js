@@ -3,7 +3,7 @@ const discord = require("discord.js");
 module.exports.run = async(bot, message, args) => {
     var botEmbed = new discord.MessageEmbed()
     .setTitle("Commands")
-    .setFooter("Alle commands.")
+    .setFooter("Alle commands")
     .setTimestamp()
     .setColor("BLUE")
     .addFields(
