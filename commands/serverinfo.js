@@ -9,6 +9,7 @@ module.exports.run = async(bot, message, args) => {
     .setDescription("Almelo Overijssel")
     .setFooter("Almelo Overijssel")
     .addFields(
+        {name:"Eigenaar:", value:"Sam_Könst"},
         {name:"Leden:", value:message.guild.memberCount}
     );
     
