@@ -6,7 +6,7 @@ const fs = require("fs");
 const client = new discord.Client();
 client.commands = new discord.Collection();
 
-client.login(env.procces.token);
+client.login(process.env.token);
 
 fs.readdir("./commands/" , (err, files) => {
 
