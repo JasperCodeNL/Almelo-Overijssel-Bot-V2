@@ -59,7 +59,7 @@ client.on("message", async message => {
 
     if(message.channel.type == "dm") return;
 
-    var prefix = env.procces.prefix
+    var prefix = process.env.prefix
 
     var messageArray = message.content.split(" ");
 
