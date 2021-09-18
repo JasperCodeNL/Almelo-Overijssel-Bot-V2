@@ -16,8 +16,8 @@ module.exports.run = async(bot, message, args) => {
 
     channel.send(embed).then(async (msg) => {
 
-        await msg.react("https://cdn.discordapp.com/emojis/605265580416565269.png?v=1")
-        await msg.react("https://cdn.discordapp.com/emojis/605265598343020545.png?v=1")
+        await msg.react("✔")
+        await msg.react("❌")
 
     }).catch(err => {
         console.log(err);
