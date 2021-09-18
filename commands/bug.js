@@ -12,6 +12,12 @@ module.exports.run = async(bot, message, args) => {
     var argsBericht = args.join(" ");
     if(!argsBericht) return message.channel.send(BugEmbed);
 
+    var embedSucces = new discord.MessageEmbed()
+        .setColor("GREEN")
+        .setTimestamp()
+        .setFooter("Bug")
+        .setDescription("**Bug succesvol geplaatst!**");
+
     var embed = new discord.MessageEmbed()
         .setDescription(argsBericht)
         .setColor("ORANGE")
@@ -19,6 +25,8 @@ module.exports.run = async(bot, message, args) => {
         .setAuthor(message.author.tag)
 
     channel.send(embed)
+    message.reply(embedSucces);
+
 
 }
 

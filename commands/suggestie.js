@@ -12,12 +12,18 @@ module.exports.run = async(bot, message, args) => {
     var argsBericht = args.join(" ");
     if(!argsBericht) return message.channel.send(SugEmbed);
 
+    var embedSucces = new discord.MessageEmbed()
+        .setColor("GREEN")
+        .setTimestamp()
+        .setFooter("Suggestie")
+        .setDescription("**Suggestie succesvol geplaatst!**");
+
     var embed = new discord.MessageEmbed()
         .setDescription(argsBericht)
         .setColor("ORANGE")
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true}))
-        .setAuthor(message.author.tag)
-
+        .setAuthor(message.author.tag);
+    
     channel.send(embed).then(async (msg) => {
 
         await msg.react("✅")
@@ -26,6 +32,7 @@ module.exports.run = async(bot, message, args) => {
     }).catch(err => {
         console.log(err);
     })
+    message.reply(embedSucces);
     
 
 }
