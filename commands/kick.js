@@ -3,7 +3,7 @@ const discord = require("discord.js");
 module.exports.run = async(bot, message, args) => {
 
     var KickEmbed = new discord.MessageEmbed()
-        .title("Kick Command")
+        .setTitle("Kick Command")
         .setDescription("Kick een gebruiker. \n Command: ?kick naam reden");
 
     var RedenEmbed = new discord.MessageEmbed()

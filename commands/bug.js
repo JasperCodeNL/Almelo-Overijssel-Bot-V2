@@ -3,7 +3,7 @@ const discord = require("discord.js");
 module.exports.run = async(bot, message, args) => {
 
     var BugEmbed = new discord.MessageEmbed()
-        .title("Bug Command")
+        .setTitle("Bug Command")
         .setDescription("Laat weten of er een bug is in de game. \n Command: *?bug bericht*");
 
     const channel = message.guild.channels.cache.find(ch => ch.name === "🔎bugs");

@@ -3,7 +3,7 @@ const discord = require("discord.js");
 module.exports.run = async(bot, message, args) => {  
 
     var BanEmbed = new discord.MessageEmbed()
-        .title("Ban Command")
+        .setTitle("Ban Command")
         .setDescription("Ban een gebruiker. \n Command: ?ban naam reden");
 
     var RedenEmbed = new discord.MessageEmbed()

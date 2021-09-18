@@ -5,7 +5,7 @@ module.exports.run = async(bot, message, args) => {
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return;
 
     var ClearEmbed = new discord.MessageEmbed()
-        .title("Clear Command")
+        .setTitle("Clear Command")
         .setDescription("Verwijder berichten. \n Command: *?clear aantal*");
  
     if (!args[0]) return message.channel.send(ClearEmbed);

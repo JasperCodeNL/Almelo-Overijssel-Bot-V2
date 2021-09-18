@@ -3,7 +3,7 @@ const discord = require("discord.js");
 module.exports.run = async(bot, message, args) => {
 
     var SugEmbed = new discord.MessageEmbed()
-    .title("Suggestie Command")
+    .setTitle("Suggestie Command")
     .setDescription("Laat weten of er een bug is in de game. \n Command: *?suggestie bericht*");
 
     const channel = message.guild.channels.cache.find(ch => ch.name === "💡suggesties");
