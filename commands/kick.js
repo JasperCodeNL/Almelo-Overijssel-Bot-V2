@@ -4,7 +4,7 @@ module.exports.run = async(bot, message, args) => {
 
     var KickEmbed = new discord.MessageEmbed()
         .setTitle("Kick Command")
-        .setDescription("Kick een gebruiker. \n Command: ?kick naam reden");
+        .setDescription("Kick een gebruiker. \n Command: *?kick naam reden*");
 
     var RedenEmbed = new discord.MessageEmbed()
         .setDescription("**Graag een reden achter laten!**")

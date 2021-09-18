@@ -4,7 +4,7 @@ module.exports.run = async(bot, message, args) => {
 
     var BanEmbed = new discord.MessageEmbed()
         .setTitle("Ban Command")
-        .setDescription("Ban een gebruiker. \n Command: ?ban naam reden");
+        .setDescription("Ban een gebruiker. \n Command: *?ban naam reden*");
 
     var RedenEmbed = new discord.MessageEmbed()
         .setDescription("**Graag een reden achter laten!**")
