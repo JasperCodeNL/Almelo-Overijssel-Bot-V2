@@ -11,7 +11,7 @@ module.exports.run = async(bot, message, args) => {
         var embedInfo = new discord.MessageEmbed()
         .setTitle("Update Command")
         .setColor("BLUE")
-        .setDescription(`Doe een update door: \n ?update (Jou bericht).`)
+        .setDescription(`Doe een update door: \n ?update -Bericht |-Bericht |-Bericht`)
 
         return message.reply(embedInfo);
 
@@ -46,7 +46,7 @@ module.exports.run = async(bot, message, args) => {
     }
 
     var UpdateEmbed = new discord.MessageEmbed()
-        .setTitle("Discord Update")
+        .setTitle("Game Update")
         .setColor("RED")
         .setDescription(`${options.bericht1} \n ${options.bericht2} \n ${options.bericht3} \n ${options.bericht4} \n ${options.bericht5} \n ${options.bericht6} \n ${options.bericht7} \n ${options.bericht8} \n ${options.bericht9} \n ${options.bericht10} \n`)
 
