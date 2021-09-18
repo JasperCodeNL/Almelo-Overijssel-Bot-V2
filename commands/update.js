@@ -32,16 +32,16 @@ module.exports.run = async(bot, message, args) => {
 
     var options = {
 
-        bericht1: argsList[0] || "Geen tekst mee gegeven",
-        bericht2: argsList[1] || "Geen tekst mee gegeven",
-        bericht3: argsList[2] || "Geen tekst mee gegeven",
-        bericht4: argsList[3] || "Geen tekst mee gegeven",
-        bericht5: argsList[4] || "Geen tekst mee gegeven",
-        bericht6: argsList[5] || "Geen tekst mee gegeven",
-        bericht7: argsList[6] || "Geen tekst mee gegeven",
-        bericht8: argsList[7] || "Geen tekst mee gegeven",
-        bericht9: argsList[8] || "Geen tekst mee gegeven",
-        bericht10: argsList[9] || "Geen tekst mee gegeven",
+        bericht1: argsList[0] || " ",
+        bericht2: argsList[1] || " ",
+        bericht3: argsList[2] || " ",
+        bericht4: argsList[3] || " ",
+        bericht5: argsList[4] || " ",
+        bericht6: argsList[5] || " ",
+        bericht7: argsList[6] || " ",
+        bericht8: argsList[7] || " ",
+        bericht9: argsList[8] || " ",
+        bericht10: argsList[9] || " ",
 
     }
 
