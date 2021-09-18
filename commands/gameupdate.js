@@ -17,6 +17,13 @@ module.exports.run = async(bot, message, args) => {
 
     }
 
+    var embedSucces = new discord.MessageEmbed()
+    .setColor("GREEN")
+    .setTimestamp()
+    .setFooter("Updates")
+    .setDescription("Update succesvlo geplaatst!");
+
+
     var argsList = args.join(" ").split(seperator);
 
     if(argsList[0] == undefined) argsList[0] == "-";
@@ -48,12 +55,15 @@ module.exports.run = async(bot, message, args) => {
     var UpdateEmbed = new discord.MessageEmbed()
         .setTitle("Game Update")
         .setColor("RED")
+        .setTimestamp()
+        .setFooter("Game Update")
         .setDescription(`${options.bericht1} \n ${options.bericht2} \n ${options.bericht3} \n ${options.bericht4} \n ${options.bericht5} \n ${options.bericht6} \n ${options.bericht7} \n ${options.bericht8} \n ${options.bericht9} \n ${options.bericht10} \n`)
 
     var channel = message.member.guild.channels.cache.find(channels => channels.name === "📙updates");
     if (!channel) return;
 
-    channel.send(UpdateEmbed)
+    channel.send(UpdateEmbed);
+    message.reply(embedSucces);
 }
 
 module.exports.help = {
