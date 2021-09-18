@@ -49,7 +49,7 @@ client.on("guildMemberAdd" , member => {
 
     if(!channel) return;
   
-    channel.send(` Welkom ${member} in **Alemlo Overijssel**! Veel Roleplay plezier!`);
+    channel.send(` Welkom ${member} in **Almelo Overijssel**! Veel Roleplay plezier!`);
   
  });
 
