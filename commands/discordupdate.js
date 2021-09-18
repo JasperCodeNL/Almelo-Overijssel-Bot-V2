@@ -10,7 +10,6 @@ module.exports.run = async(bot, message, args) => {
 
         var embedInfo = new discord.MessageEmbed()
         .setTitle("Update Command")
-        .setColor("BLUE")
         .setDescription(`Plaats een update. \n Command: *?discordupdate -Bericht |-Bericht |-Bericht*`)
 
         return message.reply(embedInfo);
