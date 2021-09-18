@@ -13,8 +13,6 @@ module.exports.run = async(bot, message, args) => {
         .setColor("ORANGE")
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true}))
         .setAuthor(message.author.tag)
-        .setFooter("Suggestie")
-        .setTimestamp()
 
     channel.send(embed).then(async (msg) => {
 
