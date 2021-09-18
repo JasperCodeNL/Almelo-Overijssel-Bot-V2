@@ -1,11 +1,30 @@
 const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
-    var botEmbed = new discord.MessageEmbed()
-    .setDescription("**Ik werk!**")
-    .setColor("GREEN") 
+
+    const channel = message.guild.channels.cache.find(ch => ch.name === "💡suggesties");
+    if(!channel) return message.reply("geen suggestie kanaal gevonden!");
+
+    var argsBericht = args.join(" ");
+    if(!argsBericht) return message.reply("Vergeet geen suggestie mee te geven!")
+
+    var embed = new discord.MessageEmbed()
+        .setDescription(argsBericht)
+        .setColor("ORANGE")
+        .setThumbnail(message.author.displayAvatarURL({ dynamic: true}))
+        .setAuthor(message.author.tag)
+        .setFooter("Suggestie")
+        .setTimestamp()
+
+    channel.send(embed).then(async (msg) => {
+
+        await msg.react(":Vink:")
+        await msg.react(":Kruis:")
+
+    }).catch(err => {
+        console.log(err);
+    })
     
-return message.channel.send(botEmbed);
 
 }
 
