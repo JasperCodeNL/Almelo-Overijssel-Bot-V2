@@ -48,7 +48,7 @@ module.exports.run = async(bot, message, args) => {
     var UpdateEmbed = new discord.MessageEmbed()
         .setTitle("Discord Update")
         .setColor("#0059de")
-        .setDescription(`-${options.bericht1} \n ${options.bericht2} \n ${options.bericht3} \n ${options.bericht4} \n ${options.bericht5} \n ${options.bericht6} \n ${options.bericht7} \n ${options.bericht8} \n ${options.bericht9} \n ${options.bericht10} \n`)
+        .setDescription(`${options.bericht1} \n ${options.bericht2} \n ${options.bericht3} \n ${options.bericht4} \n ${options.bericht5} \n ${options.bericht6} \n ${options.bericht7} \n ${options.bericht8} \n ${options.bericht9} \n ${options.bericht10} \n`)
 
     var channel = message.member.guild.channels.cache.find(channels => channels.name === "📙updates");
     if (!channel) return;
