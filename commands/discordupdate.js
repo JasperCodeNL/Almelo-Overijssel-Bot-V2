@@ -21,7 +21,7 @@ module.exports.run = async(bot, message, args) => {
         .setColor("GREEN")
         .setTimestamp()
         .setFooter("Updates")
-        .setDescription("**Update succesvlo geplaatst!**");
+        .setDescription("**Update succesvol geplaatst!**");
         
 
     var argsList = args.join(" ").split(seperator);
