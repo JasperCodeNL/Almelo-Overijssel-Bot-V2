@@ -16,8 +16,8 @@ module.exports.run = async(bot, message, args) => {
 
     channel.send(embed).then(async (msg) => {
 
-        await msg.react("✔")
-        await msg.react("❌")
+        await msg.react("✅")
+        await msg.react("❎")
 
     }).catch(err => {
         console.log(err);
