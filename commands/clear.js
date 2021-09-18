@@ -2,9 +2,13 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
     // !clear aantal
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Je hebt geen toestemming");
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return;
+
+    var ClearEmbed = new discord.MessageEmbed()
+        .title("Clear Command")
+        .setDescription("Verwijder berichten. \n Command: *?clear aantal*");
  
-    if (!args[0]) return message.reply("Geef een aantal op dat je weg wilt halen");
+    if (!args[0]) return message.channel.send(ClearEmbed);
  
     if (Number.isInteger(parseInt(args[0]))) {
  

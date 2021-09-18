@@ -1,20 +1,32 @@
 const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
+
+    var KickEmbed = new discord.MessageEmbed()
+        .title("Kick Command")
+        .setDescription("Kick een gebruiker. \n Command: ?kick naam reden");
+
+    var RedenEmbed = new discord.MessageEmbed()
+        .setDescription("**Graag een reden achter laten!**")
+        .setColor("Red");
+
+    var GebruikerEmbed = new discord.MessageEmbed()
+        .setDescription("**Kan gebruiker niet vinden!**")
+        .setColor("Red");
  
         if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("Jij hebt hier geen premmisions voor!");
  
         if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.reply("Geef de bot premmisions!");
  
-        if (!args[0]) return message.reply("Geen gebruiker opgegeven.");
+        if (!args[0]) return message.channel.send(KickEmbed);
  
-        if (!args[1]) return message.reply("Graag een redenen op te geven.");
+        if (!args[1]) return message.channel.send(RedenEmbed);
  
         var kickUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
  
         var reason = args.slice(1).join(" ");
  
-        if (!kickUser) return message.reply("Kan de gebruiker niet vinden.");
+        if (!kickUser) return message.channel.send(GebruikerEmbed);;
  
         var embed = new discord.MessageEmbed()
             .setColor("#ff0000")

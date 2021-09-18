@@ -1,20 +1,32 @@
 const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {  
- 
-    if (!args[0]) return message.reply("Geen gebruiker opgegeven!");
 
-    if (!args[1]) return message.reply("Graag een reden opgeven!");
+    var BanEmbed = new discord.MessageEmbed()
+        .title("Ban Command")
+        .setDescription("Ban een gebruiker. \n Command: ?ban naam reden");
 
-    if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("Jij hebt hier geen premmisions voor!");
+    var RedenEmbed = new discord.MessageEmbed()
+        .setDescription("**Graag een reden achter laten!**")
+        .setColor("Red");
+
+    var GebruikerEmbed = new discord.MessageEmbed()
+        .setDescription("**Kan gebruiker niet vinden!**")
+        .setColor("Red");
+
+    if (!message.member.hasPermission("BAN_MEMBERS")) return;
 
     if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("Geef de bot premmisions!");
+
+    if (!args[0]) return message.channel.send(BanEmbed);
+
+    if (!args[1]) return message.channel.send(RedenEmbed);
 
     var banUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
     var reason = args.slice(1).join(" ");
 
-    if (!banUser) return message.reply("Kan de gebruiker niet vinden!");
+    if (!banUser) return message.channel.send(GebruikerEmbed);
 
     var embed = new discord.MessageEmbed()
         .setColor("#ff0000")

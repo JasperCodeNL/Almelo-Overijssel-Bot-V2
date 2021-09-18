@@ -2,11 +2,15 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
 
+    var BugEmbed = new discord.MessageEmbed()
+        .title("Bug Command")
+        .setDescription("Laat weten of er een bug is in de game. \n Command: *?bug bericht*");
+
     const channel = message.guild.channels.cache.find(ch => ch.name === "🔎bugs");
-    if(!channel) return message.reply("geen suggestie kanaal gevonden!");
+    if(!channel) return message.reply("Kanaal niet gevonden!")
 
     var argsBericht = args.join(" ");
-    if(!argsBericht) return message.reply("Vergeet geen bericht mee te geven!")
+    if(!argsBericht) return message.channel.send(BugEmbed);
 
     var embed = new discord.MessageEmbed()
         .setDescription(argsBericht)

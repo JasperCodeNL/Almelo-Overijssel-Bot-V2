@@ -2,11 +2,15 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
 
+    var SugEmbed = new discord.MessageEmbed()
+    .title("Suggestie Command")
+    .setDescription("Laat weten of er een bug is in de game. \n Command: *?suggestie bericht*");
+
     const channel = message.guild.channels.cache.find(ch => ch.name === "💡suggesties");
     if(!channel) return message.reply("geen suggestie kanaal gevonden!");
 
     var argsBericht = args.join(" ");
-    if(!argsBericht) return message.reply("Vergeet geen suggestie mee te geven!")
+    if(!argsBericht) return message.channel.send(SugEmbed);
 
     var embed = new discord.MessageEmbed()
         .setDescription(argsBericht)

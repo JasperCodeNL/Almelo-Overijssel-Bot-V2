@@ -11,7 +11,7 @@ module.exports.run = async(bot, message, args) => {
         var embedInfo = new discord.MessageEmbed()
         .setTitle("Update Command")
         .setColor("BLUE")
-        .setDescription(`**Doe een update:** \n ?gameupdate -Bericht |-Bericht |-Bericht`)
+        .setDescription(`Plaats een update. \n Command: ?gameupdate -Bericht |-Bericht |-Bericht`)
 
         return message.reply(embedInfo);
 
