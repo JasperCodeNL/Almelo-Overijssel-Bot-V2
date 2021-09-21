@@ -53,7 +53,7 @@ client.on("guildMemberAdd", member => {
 
     var embed = new discord.MessageEmbed()
         .setTitle("Join Log Discord")
-        .setDescription("Eem speler is de server gejoined.")
+        .setDescription("Een speler is de server gejoined.")
         .setColor("GREEN")
         .addFields(
             { name: "Gebruiker:", value: `${member.user.tag} (${member.user.id})` },
@@ -67,7 +67,7 @@ client.on("guildMemberRemove", member => {
 
     var embed = new discord.MessageEmbed()
         .setTitle("Leave Log Discord")
-        .setDescription("Eem speler is de server geleaved.")
+        .setDescription("Een speler is de server geleaved.")
         .setColor("RED")
         .addFields(
             { name: "Gebruiker:", value: `${member.user.tag} (${member.user.id})` },
