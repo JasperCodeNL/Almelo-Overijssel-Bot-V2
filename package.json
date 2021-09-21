@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/JasperCodeNL/Almelo-Overijssel-Bot-V2#readme",
   "dependencies": {
-    "discord.js": "^12.5.3"
+    "discord.js": "^12.5.3",
+    "ms": "^3.0.0-canary.1"
   }
 }

@@ -53,6 +53,24 @@ client.on("guildMemberAdd" , member => {
   
  });
 
+ client.on("messageUpdate", async(oldMessage, newMessage) => {
+
+    if(!newMessage.author.bot) return;
+
+    var embed = new discord.MessageEmbed()
+        .setTitle("Bericht bewerkt")
+        .setColor("GRAY")
+        .addFields(
+            {name:"Gebruiker:", value:`${newMessage.author.tag} (${newMessage.author.id})`},
+            {name:"Kanaal:", value:`${newMessage.channel}`},
+            {name:"Voor:", value:`${oldMessage.content}`},
+            {name:"Na:", value:`${newMessage.content}`}
+        )
+    
+        
+
+ });
+
 client.on("message", async message => {
 
     if(message.author.bot) return;
