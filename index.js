@@ -57,9 +57,11 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
 
     if (newMessage.author.bot) return;
 
+    if (oldMessage.content == newMessage.content) return;
+
     var embed = new discord.MessageEmbed()
         .setTitle("Bericht bewerkt")
-        .setColor("GRAY")
+        .setColor("#969090")
         .addFields(
             { name: "Gebruiker:", value: `${newMessage.author.tag} (${newMessage.author.id})` },
             { name: "Kanaal:", value: `${newMessage.channel}` },
