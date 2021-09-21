@@ -55,6 +55,8 @@ client.on("guildMemberAdd", member => {
         .setTitle("Join Log Discord")
         .setDescription("Een speler is de server gejoined.")
         .setColor("GREEN")
+        .setFooter("Logs")
+        .setTimestamp()
         .addFields(
             { name: "Gebruiker:", value: `${member.user.tag} (${member.user.id})` },
         )
@@ -69,6 +71,8 @@ client.on("guildMemberRemove", member => {
         .setTitle("Leave Log Discord")
         .setDescription("Een speler is de server geleaved.")
         .setColor("RED")
+        .setFooter("Logs")
+        .setTimestamp()
         .addFields(
             { name: "Gebruiker:", value: `${member.user.tag} (${member.user.id})` },
         )
@@ -86,6 +90,8 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     var embed = new discord.MessageEmbed()
         .setTitle("Bericht Bewerkt")
         .setColor("BLUE")
+        .setFooter("Logs")
+        .setTimestamp()
         .addFields(
             { name: "Gebruiker:", value: `${newMessage.author.tag} (${newMessage.author.id})` },
             { name: "Kanaal:", value: `${newMessage.channel}` },
