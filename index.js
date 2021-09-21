@@ -51,6 +51,30 @@ client.on("guildMemberAdd", member => {
 
     channel.send(` Welkom ${member} in **Almelo Overijssel**! Veel Roleplay plezier!`);
 
+    var embed = new discord.MessageEmbed()
+        .setTitle("Join Log Discord")
+        .setDescription("Eem speler is de server gejoined.")
+        .setColor("GREEN")
+        .addFields(
+            { name: "Gebruiker:", value: `${member.user.tag} (${member.user.id})` },
+        )
+
+    client.channels.cache.get('889811265738919977').send(embed);
+
+});
+
+client.on("guildMemberRemove", member => {
+
+    var embed = new discord.MessageEmbed()
+        .setTitle("Leave Log Discord")
+        .setDescription("Eem speler is de server geleaved.")
+        .setColor("RED")
+        .addFields(
+            { name: "Gebruiker:", value: `${member.user.tag} (${member.user.id})` },
+        )
+
+    client.channels.cache.get('889811265738919977').send(embed);
+
 });
 
 client.on("messageUpdate", async (oldMessage, newMessage) => {
@@ -60,8 +84,8 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     if (oldMessage.content == newMessage.content) return;
 
     var embed = new discord.MessageEmbed()
-        .setTitle("Bericht bewerkt")
-        .setColor("#969090")
+        .setTitle("Bericht Bewerkt")
+        .setColor("BLUE")
         .addFields(
             { name: "Gebruiker:", value: `${newMessage.author.tag} (${newMessage.author.id})` },
             { name: "Kanaal:", value: `${newMessage.channel}` },
