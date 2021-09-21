@@ -8,13 +8,13 @@ client.commands = new discord.Collection();
 
 client.login(process.env.token);
 
-fs.readdir("./commands/" , (err, files) => {
+fs.readdir("./commands/", (err, files) => {
 
-    if(err) console.log(err);
+    if (err) console.log(err);
 
     var jsFiles = files.filter(f => f.split(".").pop() === "js");
 
-    if(jsFiles.length <=0) {
+    if (jsFiles.length <= 0) {
         console.log("Geen files gevonden!");
         return;
     }
@@ -31,51 +31,51 @@ fs.readdir("./commands/" , (err, files) => {
 });
 
 client.on("ready", async () => {
-    
+
     console.log(`${client.user.username} is online!`);
-    client.user.setActivity("Almelo Overijssel V2", {type: "PLAYING"});
+    client.user.setActivity("Almelo Overijssel V2", { type: "PLAYING" });
 
 });
 
-client.on("guildMemberAdd" , member => {
- 
-    var role =  member.guild.roles.cache.get("793840906016784474");
-  
+client.on("guildMemberAdd", member => {
+
+    var role = member.guild.roles.cache.get("793840906016784474");
+
     if (!role) return;
-  
+
     member.roles.add(role);
-  
+
     var channel = member.guild.channels.cache.get("806810000386162738");
 
-    if(!channel) return;
-  
+    if (!channel) return;
+
     channel.send(` Welkom ${member} in **Almelo Overijssel**! Veel Roleplay plezier!`);
-  
- });
 
- client.on("messageUpdate", async(oldMessage, newMessage) => {
+});
 
-    if(!newMessage.author.bot) return;
+client.on("messageUpdate", async (oldMessage, newMessage) => {
+
+    if (newMessage.author.bot) return;
 
     var embed = new discord.MessageEmbed()
         .setTitle("Bericht bewerkt")
         .setColor("GRAY")
         .addFields(
-            {name:"Gebruiker:", value:`${newMessage.author.tag} (${newMessage.author.id})`},
-            {name:"Kanaal:", value:`${newMessage.channel}`},
-            {name:"Voor:", value:`${oldMessage.content}`},
-            {name:"Na:", value:`${newMessage.content}`}
+            { name: "Gebruiker:", value: `${newMessage.author.tag} (${newMessage.author.id})` },
+            { name: "Kanaal:", value: `${newMessage.channel}` },
+            { name: "Voor:", value: `${oldMessage.content}` },
+            { name: "Na:", value: `${newMessage.content}` }
         )
-    
-        
 
- });
+    client.channels.cache.get('889811265738919977').send(embed);
+
+});
 
 client.on("message", async message => {
 
-    if(message.author.bot) return;
+    if (message.author.bot) return;
 
-    if(message.channel.type == "dm") return;
+    if (message.channel.type == "dm") return;
 
     var prefix = process.env.prefix
 
@@ -83,13 +83,13 @@ client.on("message", async message => {
 
     var command = messageArray[0];
 
-    if(!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(prefix)) return;
 
     //  Command Handler
     var arguments = messageArray.slice(1);
 
     var commands = client.commands.get(command.slice(prefix.length));
 
-    if(commands) commands.run(client,message, arguments);
+    if (commands) commands.run(client, message, arguments);
 
 });
