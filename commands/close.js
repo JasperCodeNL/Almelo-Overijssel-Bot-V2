@@ -1,6 +1,6 @@
 module.exports.run = async(bot, message, args) => {
 
-    const categoryID = "855749102171193345";
+    const categoryID = "873968786968035329";
 
     if(message.channel.parentID == categoryID){
         message.channel.delete();
