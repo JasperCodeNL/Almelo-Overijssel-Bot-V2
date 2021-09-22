@@ -20,9 +20,10 @@ module.exports.run = async(bot, message, args) => {
     message.channel.send(embed);
 
     var logEmbed = new discord.MessageEmbed()
-        .setTitle("Ticket Aangemaakt")        .setColor("BLUE")
+        .setTitle("Ticket Aangemaakt")        
         .setFooter("Logs")
         .setTimestamp()
+        .setColor("BLUE")
         .addFields(
             { name: "Gebruiker:", value: `${message.author.tag} (${message.author.id})` },
             { name: "ticket:", value: `.` }
