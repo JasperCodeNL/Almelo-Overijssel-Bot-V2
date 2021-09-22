@@ -1,3 +1,5 @@
+const discord = require("discord.js");
+
 module.exports.run = async(bot, message, args) => {
 
     const categoryID = "873968786968035329";
@@ -15,7 +17,7 @@ module.exports.run = async(bot, message, args) => {
         );
     
         bot.channels.cache.get('889811265738919977').send(LogEmbed);
-        
+
         message.channel.delete();
     }
 
