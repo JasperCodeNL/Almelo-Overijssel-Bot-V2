@@ -67,7 +67,7 @@ module.exports.run = async(bot, message, args) => {
                     .setColor("BLUE")
                     .addFields(
                         { name: "Gebruiker:", value: `${message.author.tag} (${message.author.id})` },
-                        { name: "Ticket:", value: `${createdChannel}` }
+                        { name: "Ticket:", value: `${createdChannel.name}` }
                     );
 
                     bot.channels.cache.get('889811265738919977').send(LogEmbed);
