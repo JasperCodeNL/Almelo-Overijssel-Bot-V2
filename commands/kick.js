@@ -26,7 +26,7 @@ module.exports.run = async(bot, message, args) => {
  
         var reason = args.slice(1).join(" ");
  
-        if (!kickUser) return message.channel.send(GebruikerEmbed);;
+        if (!kickUser) return message.channel.send(GebruikerEmbed);
  
         var embed = new discord.MessageEmbed()
             .setColor("#ff0000")
