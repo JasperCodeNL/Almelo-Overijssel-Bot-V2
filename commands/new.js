@@ -62,7 +62,7 @@ module.exports.run = async(bot, message, args) => {
 
                     var LogEmbed =  new discord.MessageEmbed()
                     .setTitle("Ticket Aangemaakt")
-                    .setFooter("Log")
+                    .setFooter("Logs")
                     .setTimestamp()
                     .setColor("BLUE")
                     .addFields(
