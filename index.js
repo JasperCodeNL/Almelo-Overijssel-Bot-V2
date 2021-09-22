@@ -86,7 +86,7 @@ client.on("messageDelete", async messageDeleted => {
     if (messageDeleted.author.bot) return;
 
     var embed = new discord.MessageEmbed()
-        .setTitle("Bericht Verwijdert")
+        .setTitle("Bericht Verwijderd")
         .setColor("BLUE")
         .setFooter("Logs")
         .setTimestamp()
