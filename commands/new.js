@@ -25,7 +25,7 @@ module.exports.run = async(bot, message, args) => {
         .setTimestamp()
         .addFields(
             { name: "Gebruiker:", value: `${message.author.tag} (${message.author.id})` },
-            { name: "ticket:", value: `${newMessage.channel}` }
+            { name: "ticket:", value: `.` }
         )
 
     client.channels.cache.get('873968786968035329').send(logEmbed);
