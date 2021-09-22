@@ -58,24 +58,23 @@ module.exports.run = async(bot, message, args) => {
                         .setTimestamp()
                         .setColor("BLUE");
                         
+                    settedParent.send(embedParent);
 
                     var LogEmbed =  new discord.MessageEmbed()
-                        .setTitle("Ticket Aangemaakt")
-                        .setFooter("Log")
-                        .setTimestamp()
-                        .setColor("BLUE")
-                        .addFields(
-                            { name: "Gebruiker:", value: `${message.author.tag} (${newMessage.author.id})` },
-                            { name: "Ticket:", value: `${message.author.tag}` }
-                        );
-                        
-                    settedParent.send(embedParent);
+                    .setTitle("Ticket Aangemaakt")
+                    .setFooter("Log")
+                    .setTimestamp()
+                    .setColor("BLUE")
+                    .addFields(
+                        { name: "Gebruiker:", value: `${message.author.tag} (${newMessage.author.id})` },
+                        { name: "Ticket:", value: `${message.author.tag}` }
+                    );
+
                     client.channels.cache.get('889811265738919977').send(LogEmbed);
-                    
 
                 }
             ).catch(err => {
-                message.channel.send("Er ging iets fout!")
+            message.channel.send(`Er ging iets fout! ${err}`)
             });
         }
     )
