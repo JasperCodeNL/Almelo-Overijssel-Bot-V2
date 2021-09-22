@@ -19,6 +19,17 @@ module.exports.run = async(bot, message, args) => {
     
     message.channel.send(embed);
 
+    var logEmbed = new discord.MessageEmbed()
+        .setTitle("Ticket Aangemaakt")        .setColor("BLUE")
+        .setFooter("Logs")
+        .setTimestamp()
+        .addFields(
+            { name: "Gebruiker:", value: `${message.author.tag} (${message.author.id})` },
+            { name: "ticket:", value: `${newMessage.channel}` }
+        )
+
+    client.channels.cache.get('873968786968035329').send(logEmbed);
+
     message.guild.channels.create("Ticket-" + userDiscriminator, { type: 'text' }).then(
         (createdChannel) => {
             createdChannel.setParent(categoryID).then(
