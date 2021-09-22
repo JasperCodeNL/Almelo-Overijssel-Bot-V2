@@ -57,7 +57,18 @@ module.exports.run = async(bot, message, args) => {
                         .setFooter("Ticket systeem")
                         .setTimestamp()
                         .setColor("BLUE");
-                    
+
+                    var LogEmbed =  new discord.MessageEmbed()
+                        .setTitle("Ticket Aangemaakt")
+                        .setFooter("Log")
+                        .setTimestamp()
+                        .addFields(
+                            { name: "Gebruiker:", value: `${message.author.tag} (${newMessage.author.id})` },
+                            { name: "Ticket:", value: `${message.author.tag}` },
+                        )
+                        .setColor("BLUE");
+                
+                    client.channels.cache.get('889811265738919977').send(LogEmbed);
                     settedParent.send(embedParent);
 
                 }
@@ -66,6 +77,7 @@ module.exports.run = async(bot, message, args) => {
             });
         }
     )
+    
 }
    
 module.exports.help = {
