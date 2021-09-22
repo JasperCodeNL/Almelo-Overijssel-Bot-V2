@@ -11,15 +11,6 @@ module.exports.run = async(bot, message, args) => {
         
     if(Ticketbestaat) return;
 
-    var embed = new discord.MessageEmbed()
-        .setDescription(`**Je ticket is aangemaakt ${message.author.username}!**`)
-        .setFooter("Ticket systeem")
-        .setTimestamp()
-        .setColor("GREEN");
-    
-    message.channel.send(embed);
-
-
     message.guild.channels.create("Ticket-" + userDiscriminator, { type: 'text' }).then(
         (createdChannel) => {
             createdChannel.setParent(categoryID).then(
@@ -51,6 +42,15 @@ module.exports.run = async(bot, message, args) => {
 //                        READ_MASSAGES_HISTORY: true,
 //                        VIEW_CHANNEL: true
 //                    });
+
+                    var embed = new discord.MessageEmbed()
+                        .setDescription(`**Je ticket is aangemaakt ${message.author.username}! ${createdChannel}**`)
+                        .setFooter("Ticket systeem")
+                        .setTimestamp()
+                        .setColor("GREEN");
+
+                    message.channel.send(embed);
+
 
                     var embedParent =  new discord.MessageEmbed()
                         .setDescription(`**Welkom ${message.author.username}, het staffteam komt er zo aan. \n Stuur alvast je klacht/vraag.** `)
