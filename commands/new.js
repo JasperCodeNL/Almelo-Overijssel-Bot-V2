@@ -70,7 +70,7 @@ module.exports.run = async(bot, message, args) => {
                         { name: "Ticket:", value: `${message.author.tag}` }
                     );
 
-                    client.channels.cache.get('889811265738919977').send(LogEmbed);
+                    bot.channels.cache.get('889811265738919977').send(LogEmbed);
 
                 }
             ).catch(err => {
