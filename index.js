@@ -81,6 +81,25 @@ client.on("guildMemberRemove", member => {
 
 });
 
+client.on("messageDelete", async messageDeleted => {
+
+    if (messageDeleted.author.bot) return;
+
+    var embed = new discord.MessageEmbed()
+        .setTitle("Bericht Verwijdert")
+        .setColor("BLUE")
+        .setFooter("Logs")
+        .setTimestamp()
+        .addFields(
+            { name: "Gebruiker:", value: `${messageDeleted.author.tag} (${messageDeleted.author.id})` },
+            { name: "Kanaal:", value: `${messageDeleted.channel}` },
+            { name: "Bericht:", value: `${messageDeleted.content}` }
+        )
+
+    client.channels.cache.get('889811265738919977').send(embed);
+
+});
+
 client.on("messageUpdate", async (oldMessage, newMessage) => {
 
     if (newMessage.author.bot) return;
