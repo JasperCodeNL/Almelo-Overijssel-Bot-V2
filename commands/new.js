@@ -66,7 +66,7 @@ module.exports.run = async(bot, message, args) => {
                     .setTimestamp()
                     .setColor("BLUE")
                     .addFields(
-                        { name: "Gebruiker:", value: `${message.author.tag} (${newMessage.author.id})` },
+                        { name: "Gebruiker:", value: `${message.author.tag} (${message.author.id})` },
                         { name: "Ticket:", value: `${message.author.tag}` }
                     );
 
