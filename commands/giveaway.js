@@ -89,7 +89,7 @@ module.exports.run = async(bot, message, args) => {
             .setFooter(`GiveAway`)
             .setTimestamp()
             .setColor("BLUE")
-            .setDescription("Gefeliciteerd**" + winners[y].username + `** Je hebt gewonnen **${item}!**`);
+            .setDescription("Gefeliciteerd** " + winners[y].username + `** Je hebt gewonnen **${item}!**`);
 
             message.channel.send(winnaarEmbed);
         }
