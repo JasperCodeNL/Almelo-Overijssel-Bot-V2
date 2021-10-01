@@ -23,7 +23,7 @@ module.exports.run = async(bot, message, args) => {
 
     var giveawayEmbed = new discord.MessageEmbed()
     .setTitle("🎉GiveAway!🎉")
-    .setFooter(`Eindigt: ${dateEnd}!`)
+    .setFooter(`Eindigt: ${time} seconden!`)
     .setColor("BLUE")
     .setTimestamp("00:00")
     .setDescription(`Prijs: \n ${item}`);
@@ -85,7 +85,7 @@ module.exports.run = async(bot, message, args) => {
         }
 
 
-    }, time * 10000)
+    }, time * 1000)
 
 }
 
