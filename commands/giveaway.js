@@ -30,7 +30,7 @@ module.exports.run = async(bot, message, args) => {
     .setFooter(`GiveAway`)
     .setColor("BLUE")
     .setTimestamp()
-    .setDescription(`Win **${item}!** \n In totaal ${time} uur de tijd!`);
+    .setDescription(`Win **${item}!** \n In totaal ${time} uur de tijd. \n Doe mee door op 🎉 klikken.`);
 
     var embedSend = await message.channel.send(giveawayEmbed);
     embedSend.react("🎉");
