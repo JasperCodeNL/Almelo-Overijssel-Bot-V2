@@ -30,7 +30,7 @@ module.exports.run = async(bot, message, args) => {
     .setFooter(`GiveAway`)
     .setColor("BLUE")
     .setTimestamp()
-    .setDescription(`Win **${item}** \n In totaal ${time} uur de tijd`);
+    .setDescription(`Win **${item}!** \n In totaal ${time} uur de tijd!`);
 
     var embedSend = await message.channel.send(giveawayEmbed);
     embedSend.react("🎉");
@@ -89,7 +89,7 @@ module.exports.run = async(bot, message, args) => {
             .setFooter(`GiveAway`)
             .setTimestamp()
             .setColor("BLUE")
-            .setDescription("Gefeliciteerd**" + winners[y].username + `** Je hebt gewonnen **${item}**`);
+            .setDescription("Gefeliciteerd**" + winners[y].username + `** Je hebt gewonnen **${item}!**`);
 
             message.channel.send(winnaarEmbed);
         }
