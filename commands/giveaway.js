@@ -2,18 +2,22 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
 
+    var gEmbed = new discord.MessageEmbed()
+    .setTitle("Giveaway Command")
+    .setDescription("Geef een leuke giveaway. \n Command: *?giveaway tijd(tijd is in uren) winnaaraantal item(het spul wat je weg geeft)*");
+
     var item = "";
     var time = "";
     var winnerCount = "";
 
     if(!message.member.hasPermission("BAN_MEMBERS")) return;
 
-    winnerCount = args[0];
-    time = args[1];
+    winnerCount = args[1];
+    time = args[0];
     item = args.splice(2, args.length).join(" ");
 
+    if(!time) return message.channel.send(gEmbed);
     if(!winnerCount) return;
-    if(!time) return;
     if(!item) return;
 
     message.delete();
@@ -23,9 +27,10 @@ module.exports.run = async(bot, message, args) => {
 
     var giveawayEmbed = new discord.MessageEmbed()
     .setTitle("🎉GiveAway!🎉")
-    .setFooter(`Vanaf ${date} nog ${time} uur!`)
+    .setFooter(`GiveAway`)
     .setColor("BLUE")
-    .setDescription(`**Prijs:** \n ${item}`);
+    .setTimestamp()
+    .setDescription(`Win **${item}** \n In totaal ${time} uur de tijd`);
 
     var embedSend = await message.channel.send(giveawayEmbed);
     embedSend.react("🎉");
@@ -79,8 +84,14 @@ module.exports.run = async(bot, message, args) => {
 
         for (let y = 0; y < winners.length; y++) {
 
-            message.channel.send("Gefeliciteerd **" + winners[y].username + `** Je hebt gewonnen **${item}**`);
-            
+            var winnaarEmbed = new discord.MessageEmbed()
+            .setTitle("🎉GiveAway Winnaar!🎉")
+            .setFooter(`GiveAway`)
+            .setTimestamp()
+            .setColor("BLUE")
+            .setDescription("Gefeliciteerd**" + winners[y].username + `** Je hebt gewonnen **${item}**`);
+
+            message.channel.send(winnaarEmbed);
         }
 
 
