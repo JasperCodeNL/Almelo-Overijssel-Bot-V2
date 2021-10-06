@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
 
-    const categoryID = "873968786968035329";
+    var categoryID = "873968786968035329";
 
     if(message.channel.parentID == categoryID){
 
