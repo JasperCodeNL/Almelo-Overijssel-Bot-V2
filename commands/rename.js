@@ -10,7 +10,7 @@ module.exports.run = async(bot, message, args) => {
 
     var newNaam = args[0]
 
-    message.reply(newNaam)
+    message.channel.setName(newNaam)
 
    // message.channel.name.new(newNaam)
 
