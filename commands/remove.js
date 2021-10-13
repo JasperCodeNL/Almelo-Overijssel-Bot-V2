@@ -4,7 +4,7 @@ module.exports.run = async(bot, message, args) => {
 
     var categoryID = "873968786968035329";
 
-    if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("Je hebt geen perms!");
+    if(!message.member.roles.cache.has('793838521826672660')) return message.reply("Je hebt geen perms!");
 
     if(!message.channel.parentID == categoryID) return message.reply("Haha wat grappig!");
 
@@ -21,7 +21,7 @@ module.exports.run = async(bot, message, args) => {
         .setFooter("Ticket systeem");
     
     var embed = new discord.MessageEmbed()
-        .setDescription(`**${removeUser} Is verwijdert uit de ticket door ${Authorp}**`)
+        .setDescription(`**${Authorp} Heeft ${addUser} verwijderd uit de ticket!**`)
         .setColor("GREEN")
         .setTimestamp()
         .setFooter("Ticket systeem");
