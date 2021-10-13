@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
 
-    var categoryID = "873968786968035329";
+    const categoryID = "873968786968035329";
 
     if(!message.member.roles.cache.has('793838521826672660')) return message.reply("Je hebt geen perms!");
 
