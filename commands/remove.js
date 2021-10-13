@@ -21,7 +21,7 @@ module.exports.run = async(bot, message, args) => {
         .setFooter("Ticket systeem");
     
     var embed = new discord.MessageEmbed()
-        .setDescription(`**${Authorp} Heeft ${addUser} verwijderd uit de ticket!**`)
+        .setDescription(`**${Authorp} Heeft ${removeUser} verwijderd uit de ticket!**`)
         .setColor("GREEN")
         .setTimestamp()
         .setFooter("Ticket systeem");
