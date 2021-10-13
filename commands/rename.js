@@ -6,12 +6,22 @@ module.exports.run = async(bot, message, args) => {
 
     if(!message.member.roles.cache.has('793838521826672660')) return message.reply("Je hebt geen perms!");
 
-    if(!message.channel.parentID == categoryID) return message.reply("Haha wat grappig!");
+    if(message.channel.parentID == categoryID) {
 
-    var newNaam = args[0]
+ 
+        var newNaam = args[0]
 
-    message.channel.setName(newNaam)
+        message.channel.setName(newNaam)
+    
 
+    } else {
+
+        return message.reply("Haha wat grappig!");
+
+    }
+
+
+  
 }
 
 

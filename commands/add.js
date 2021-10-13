@@ -6,52 +6,60 @@ module.exports.run = async(bot, message, args) => {
 
     if(!message.member.roles.cache.has('793838521826672660')) return message.reply("Je hebt geen perms!");
 
-    if(!message.channel.parentID == categoryID) return message.reply("Haha wat grappig!");
+    if(message.channel.parentID == categoryID) {
 
-    var addUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+        var addUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     
-    if(!addUser) return message.reply("Geen gebruiker meegegeven!");
-
-    var Authorp = message.author
-
-    var embedPrompt = new discord.MessageEmbed()
-        .setDescription(`**Wil je ${addUser} toevoegen?**`)
-        .setColor("BLUE")
-        .setTimestamp()
-        .setFooter("Ticket systeem");
+        if(!addUser) return message.reply("Geen gebruiker meegegeven!");
     
-    var embed = new discord.MessageEmbed()
-        .setDescription(`**${Authorp} Heeft ${addUser} toegevoegd aan de ticket! **`)
-        .setColor("GREEN")
-        .setTimestamp()
-        .setFooter("Ticket systeem");
-
-    message.channel.send(embedPrompt).then(async msg => {
+        var Authorp = message.author
+    
+        var embedPrompt = new discord.MessageEmbed()
+            .setDescription(`**Wil je ${addUser} toevoegen?**`)
+            .setColor("BLUE")
+            .setTimestamp()
+            .setFooter("Ticket systeem");
         
-        message.delete();
+        var embed = new discord.MessageEmbed()
+            .setDescription(`**${Authorp} Heeft ${addUser} toegevoegd aan de ticket! **`)
+            .setColor("GREEN")
+            .setTimestamp()
+            .setFooter("Ticket systeem");
+    
+        message.channel.send(embedPrompt).then(async msg => {
+            
+            message.delete();
+    
+            var emoji = await promptMessage(msg, message.author, 30, ["✅","❌"]);
+    
+            if(emoji == "✅") {
+    
+                msg.delete();
+    
+                message.channel.updateOverwrite(addUser,{
+                    SEND_MESSAGES: true,
+                    VIEW_CHANNEL: true
+                });
+    
+                message.channel.send(embed);
+    
+            }else if(emoji == "❌"){
+    
+                msg.delete();
+    
+                message.reply("Geanuleerd!").then(msg => msg.delete({ timeout: 5000 }));
+            }
+    
+        });
+    
 
-        var emoji = await promptMessage(msg, message.author, 30, ["✅","❌"]);
+    } else {
 
-        if(emoji == "✅") {
+        return message.reply("Haha wat grappig!");
 
-            msg.delete();
+    }
 
-            message.channel.updateOverwrite(addUser,{
-                SEND_MESSAGES: true,
-                VIEW_CHANNEL: true
-            });
-
-            message.channel.send(embed);
-
-        }else if(emoji == "❌"){
-
-            msg.delete();
-
-            message.reply("Geanuleerd!").then(msg => msg.delete({ timeout: 5000 }));
-        }
-
-    });
-
+   
 }
 
 // Emojis aan teksten kopellen.

@@ -6,51 +6,60 @@ module.exports.run = async(bot, message, args) => {
 
     if(!message.member.roles.cache.has('793838521826672660')) return message.reply("Je hebt geen perms!");
 
-    if(!message.channel.parentID == categoryID) return message.reply("Haha wat grappig!");
-
-    var removeUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+    if(message.channel.parentID == categoryID) {
     
-    if(!removeUser) return message.reply("Geen gebruiker meegegeven!");
-
-    var Authorp = message.author
-
-    var embedPrompt = new discord.MessageEmbed()
-        .setDescription(`**Wil je ${removeUser} Verwijderen uit deze ticket?**`)
-        .setColor("BLUE")
-        .setTimestamp()
-        .setFooter("Ticket systeem");
+        var removeUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     
-    var embed = new discord.MessageEmbed()
-        .setDescription(`**${Authorp} Heeft ${removeUser} verwijderd uit de ticket!**`)
-        .setColor("GREEN")
-        .setTimestamp()
-        .setFooter("Ticket systeem");
-
-    message.channel.send(embedPrompt).then(async msg => {
+        if(!removeUser) return message.reply("Geen gebruiker meegegeven!");
+    
+        var Authorp = message.author
+    
+        var embedPrompt = new discord.MessageEmbed()
+            .setDescription(`**Wil je ${removeUser} Verwijderen uit deze ticket?**`)
+            .setColor("BLUE")
+            .setTimestamp()
+            .setFooter("Ticket systeem");
         
-        message.delete();
+        var embed = new discord.MessageEmbed()
+            .setDescription(`**${Authorp} Heeft ${removeUser} verwijderd uit de ticket!**`)
+            .setColor("GREEN")
+            .setTimestamp()
+            .setFooter("Ticket systeem");
+    
+        message.channel.send(embedPrompt).then(async msg => {
+            
+            message.delete();
+    
+            var emoji = await promptMessage(msg, message.author, 30, ["✅","❌"]);
+    
+            if(emoji == "✅") {
+    
+                msg.delete();
+    
+                message.channel.updateOverwrite(removeUser,{
+                    SEND_MESSAGES: false,
+                    VIEW_CHANNEL: false
+                });
+    
+                message.channel.send(embed);
+    
+            }else if(emoji == "❌"){
+    
+                msg.delete();
+    
+                message.reply("Geanuleerd!").then(msg => msg.delete({ timeout: 5000 }));
+            }
+    
+        });
 
-        var emoji = await promptMessage(msg, message.author, 30, ["✅","❌"]);
+    } else {
 
-        if(emoji == "✅") {
+        return message.reply("Haha wat grappig!");
 
-            msg.delete();
+    }
 
-            message.channel.updateOverwrite(removeUser,{
-                SEND_MESSAGES: false,
-                VIEW_CHANNEL: false
-            });
 
-            message.channel.send(embed);
-
-        }else if(emoji == "❌"){
-
-            msg.delete();
-
-            message.reply("Geanuleerd!").then(msg => msg.delete({ timeout: 5000 }));
-        }
-
-    });
+  
 
 }
 
