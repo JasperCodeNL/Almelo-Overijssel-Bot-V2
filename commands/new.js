@@ -53,7 +53,7 @@ module.exports.run = async(bot, message, args) => {
 
 
                     var embedParent =  new discord.MessageEmbed()
-                        .setDescription(`**Welkom ${message.author}, het staffteam komt er zo aan. Stuur alvast je bericht.`)
+                        .setDescription(`**Welkom ${message.author}, het staffteam komt er zo aan. Stuur alvast je bericht.**`)
                         .setFooter("Ticket systeem")
                         .setTimestamp()
                         .setColor("BLUE");
