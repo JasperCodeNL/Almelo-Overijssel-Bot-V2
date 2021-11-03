@@ -100,6 +100,8 @@ client.on("messageDelete", async messageDeleted => {
 
 });
 
+//j
+
 client.on("messageUpdate", async (oldMessage, newMessage) => {
 
     if (newMessage.author.bot) return;
