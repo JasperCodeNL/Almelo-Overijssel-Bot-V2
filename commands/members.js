@@ -13,5 +13,5 @@ return message.channel.send(botEmbed);
 }
 
 module.exports.help = {
-    name: "members"
+    name: "leden"
 }
