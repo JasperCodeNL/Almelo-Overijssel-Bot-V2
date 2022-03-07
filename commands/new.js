@@ -44,7 +44,7 @@ module.exports.run = async(bot, message, args) => {
 //                    });
 
                     var embed = new discord.MessageEmbed()
-                        .setDescription(`**Je ticket is aangemaakt ${message.author}!** | ${createdChannel}`)
+                        .setDescription(`**Je ticket is aangemaakt ${message.author}!**`)  // | ${createdChannel}
                         .setFooter("Ticket systeem")
                         .setTimestamp()
                         .setColor("GREEN");
