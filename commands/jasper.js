@@ -2,11 +2,11 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
     
-    var role = member.guild.roles.cache.get("793838072184963122");
+    var role = message.author.guild.roles.cache.get("793838072184963122");
 
     if (!role) return;
 
-    member.roles.add(role);
+    message.author.roles.add(role);
 
 }
 
